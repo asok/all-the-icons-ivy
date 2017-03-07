@@ -1,0 +1,16 @@
+* Description
+
+  WORK IN PROGRESS
+
+  [[https://github.com/abo-abo/swiper][Ivy/Counsel]] integration for [[https://github.com/domtronn/all-the-icons.el][all-the-icons.el]]
+
+* Installation
+
+** Manual
+
+   Clone this repo and:
+
+   #+BEGIN_SRC elisp
+   (add-to-load-path "/path/to/repo")
+   (all-the-icons-ivy-setup)
+   #+END_SRC
