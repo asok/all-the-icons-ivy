@@ -1,6 +1,6 @@
 ;;; all-the-icons-ivy.el --- Shows icons while using ivy and counsel  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2016  jtbm37
+;; Copyright (C) 2017 asok
 
 ;; Author: asok
 ;; Version: 0.1.0
