@@ -31,27 +31,27 @@
 ;; (require 'all-the-icons-ivy)
 ;; (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy-buffer-transformer)
 
-;;; Code
+;;; Code:
 
 (require 'all-the-icons)
 
 (defun all-the-icons-ivy--buffer-propertize (b s)
-  "If buffer B is modified it applies `ivy-modified-buffer' face on string S."
+  "If buffer B is modified apply `ivy-modified-buffer' face on string S."
   (if (and (buffer-file-name b)
            (buffer-modified-p b))
       (propertize s 'face 'ivy-modified-buffer)
     s))
 
 (defun all-the-icons-ivy--icon-for-mode (mode)
-  "Applies `all-the-icons-for-mode' on MODE but either it returns an icon or nil."
+  "Apply `all-the-icons-for-mode' on MODE but either return an icon or nil."
   (let ((icon (all-the-icons-icon-for-mode mode)))
     (unless (symbolp icon)
       icon)))
 
 (defun all-the-icons-ivy--buffer-transformer (b s)
-  "Returns a candidate string for buffer B named S preceded by an icon.
-It tries to find the icon for the buffer's B `major-mode'.
-If that fails it looks for an icon for the mode that the `major-mode' is derived from."
+  "Return a candidate string for buffer B named S preceded by an icon.
+Try to find the icon for the buffer's B `major-mode'.
+If that fails look for an icon for the mode that the `major-mode' is derived from."
   (let ((mode (buffer-local-value 'major-mode b)))
     (format "%s\t%s"
             (propertize "\t" 'display (or
@@ -60,14 +60,14 @@ If that fails it looks for an icon for the mode that the `major-mode' is derived
             (all-the-icons-ivy--buffer-propertize b s))))
 
 (defun all-the-icons-ivy-file-transformer (s)
-  "Returns a candidate string for filename S preceded by an icon."
+  "Return a candidate string for filename S preceded by an icon."
   (format "%s\t%s"
           (propertize "\t" 'display (all-the-icons-icon-for-file s))
           s))
 
 (defun all-the-icons-ivy-buffer-transformer (s)
-  "Returns a candidate string for buffer named S.
-It assumes that sometimes the buffer named S might not exists.
+  "Return a candidate string for buffer named S.
+Assume that sometimes the buffer named S might not exists.
 That can happen if `ivy-switch-buffer' does not find the buffer and it
 falls back to `ivy-recentf' and the same transformer is used."
   (let ((b (get-buffer s)))
@@ -77,7 +77,7 @@ falls back to `ivy-recentf' and the same transformer is used."
 
 ;;;###autoload
 (defun all-the-icons-ivy-setup ()
-  "Sets ivy's display transformers to show relevant icons next to the candidates."
+  "Set ivy's display transformers to show relevant icons next to the candidates."
   (ivy-set-display-transformer 'ivy-switch-buffer                   'all-the-icons-ivy-buffer-transformer)
   (ivy-set-display-transformer 'ivy-switch-buffer-other-window      'all-the-icons-ivy-buffer-transformer)
   (ivy-set-display-transformer 'counsel-find-file                   'all-the-icons-ivy-file-transformer)
@@ -86,3 +86,7 @@ falls back to `ivy-recentf' and the same transformer is used."
   (ivy-set-display-transformer 'counsel-projectile-find-dir         'all-the-icons-ivy-file-transformer))
 
 (provide 'all-the-icons-ivy)
+
+(provide 'all-the-icons-ivy)
+
+;;; all-the-icons-ivy.el ends here
