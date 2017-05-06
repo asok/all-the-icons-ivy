@@ -3,7 +3,7 @@
 ;; Copyright (C) 2017 asok
 
 ;; Author: asok
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Keywords: icons, ivy, counsel
 ;; Package-Requires: ((emacs "24.4") (all-the-icons "2.4.0"))
 
