@@ -77,6 +77,7 @@ falls back to `ivy-recentf' and the same transformer is used."
 
 ;;;###autoload
 (defun all-the-icons-ivy-setup ()
+  "Sets ivy's display transformers to show relevant icons next to the candidates."
   (ivy-set-display-transformer 'ivy-switch-buffer                   'all-the-icons-ivy-buffer-transformer)
   (ivy-set-display-transformer 'ivy-switch-buffer-other-window      'all-the-icons-ivy-buffer-transformer)
   (ivy-set-display-transformer 'counsel-find-file                   'all-the-icons-ivy-file-transformer)
