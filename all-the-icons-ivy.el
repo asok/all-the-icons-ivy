@@ -87,6 +87,4 @@ falls back to `ivy-recentf' and the same transformer is used."
 
 (provide 'all-the-icons-ivy)
 
-(provide 'all-the-icons-ivy)
-
 ;;; all-the-icons-ivy.el ends here
