@@ -4,7 +4,7 @@
 
 ;; Author: asok
 ;; Version: 0.1.1
-;; Keywords: icons, ivy, counsel
+;; Keywords: faces
 ;; Package-Requires: ((emacs "24.4") (all-the-icons "2.4.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
