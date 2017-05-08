@@ -3,9 +3,9 @@
 ;; Copyright (C) 2017 asok
 
 ;; Author: asok
-;; Version: 0.1.1
+;; Version: 0.1.2
 ;; Keywords: faces
-;; Package-Requires: ((emacs "24.4") (all-the-icons "2.4.0"))
+;; Package-Requires: ((emacs "24.4") (all-the-icons "2.4.0") (ivy "0.8.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@
 ;;; Code:
 
 (require 'all-the-icons)
+(require 'ivy)
 
 (defun all-the-icons-ivy--buffer-propertize (b s)
   "If buffer B is modified apply `ivy-modified-buffer' face on string S."
