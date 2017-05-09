@@ -1,10 +1,19 @@
 * Description
 
-  WORK IN PROGRESS
-
   [[https://github.com/abo-abo/swiper][Ivy/Counsel]] integration for [[https://github.com/domtronn/all-the-icons.el][all-the-icons.el]]
 
+  [[file:screenshot_0.png]]
+
 * Installation
+
+** Melpa
+
+   Once you have setup [Melpa](https://melpa.org/#/getting-started) you can use `package-install` command to install Projectile Rails. The package name is `all-the-icons-ivy`.
+   After that add to your config:
+
+   #+BEGIN_SRC elisp
+   (all-the-icons-ivy-setup)
+   #+END_SRC
 
 ** Manual
 
@@ -14,3 +23,7 @@
    (add-to-load-path "/path/to/repo")
    (all-the-icons-ivy-setup)
    #+END_SRC
+
+* Contribution
+
+   If you think that some other ivy/counsel commands could be decorated with the icons feel free to open an issue.
