@@ -8,7 +8,7 @@
 
 ** Melpa
 
-   Once you have setup [[https://melpa.org/#/getting-started][Melpa]] you can use ~package-install~ command to install Projectile Rails. The package name is ~all-the-icons-ivy~.
+   Once you have setup [[https://melpa.org/#/getting-started][Melpa]] you can use ~package-install~ command to install the package. The package name is ~all-the-icons-ivy~.
    After that add to your config:
 
    #+BEGIN_SRC elisp
