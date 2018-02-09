@@ -15,6 +15,14 @@
    (all-the-icons-ivy-setup)
    #+END_SRC
 
+   or using [[https://github.com/jwiegley/use-package][Use-package]]:
+
+   #+BEGIN_SRC elisp
+     (use-package all-the-icons-ivy
+       :config
+       (all-the-icons-ivy-setup))
+   #+END_SRC
+
 ** Manual
 
    Clone this repo and:
@@ -23,6 +31,21 @@
    (add-to-load-path "/path/to/repo")
    (all-the-icons-ivy-setup)
    #+END_SRC
+
+* Customization
+
+  By default ~all-the-icons-ivy-setup~ iconifies only some commands, you can customize it by setting variables ~all-the-icons-ivy-buffer-cmds~ and ~all-the-icons-ivy-file-cmds~ before calling.
+  E.g. if you don't want to add icons to buffer names:
+  #+BEGIN_SRC elisp
+    (setq all-the-icons-ivy-buffer-cmds '())
+  #+END_SRC
+
+  or to iconify more file commands
+  #+BEGIN_SRC elisp
+    (setq all-the-icons-ivy-file-cmds
+          '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
+  #+END_SRC
+
 
 * Contribution
 
