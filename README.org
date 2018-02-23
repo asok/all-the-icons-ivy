@@ -34,15 +34,15 @@
 
 * Customization
 
-  By default ~all-the-icons-ivy-setup~ iconifies only some commands, you can customize it by setting variables ~all-the-icons-ivy-buffer-cmds~ and ~all-the-icons-ivy-file-cmds~ before calling.
+  By default ~all-the-icons-ivy-setup~ iconifies only some commands, you can customize it by setting variables ~all-the-icons-ivy-buffer-commands~ and ~all-the-icons-ivy-file-commands~ before calling.
   E.g. if you don't want to add icons to buffer names:
   #+BEGIN_SRC elisp
-    (setq all-the-icons-ivy-buffer-cmds '())
+    (setq all-the-icons-ivy-buffer-commands '())
   #+END_SRC
 
   or to iconify more file commands
   #+BEGIN_SRC elisp
-    (setq all-the-icons-ivy-file-cmds
+    (setq all-the-icons-ivy-file-commands
           '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
   #+END_SRC
 

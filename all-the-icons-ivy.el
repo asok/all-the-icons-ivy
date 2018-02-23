@@ -40,14 +40,14 @@
   "Shows icons while using ivy and counsel."
   :group 'ivy)
 
-(defcustom all-the-icons-ivy-buffer-cmds
+(defcustom all-the-icons-ivy-buffer-commands
   '(ivy-switch-buffer ivy-switch-buffer-other-window counsel-projectile-switch-to-buffer)
   "Commands to use with `all-the-icons-ivy-buffer-transformer'."
   :type '(repeat function)
   :group 'all-the-icons-ivy)
 
 
-(defcustom all-the-icons-ivy-file-cmds
+(defcustom all-the-icons-ivy-file-commands
   '(counsel-find-file counsel-projectile-find-file counsel-projectile-find-dir)
   "Commands to use with `all-the-icons-ivy-file-transformer'."
   :type '(repeat function)
@@ -96,9 +96,9 @@ falls back to `ivy-recentf' and the same transformer is used."
 ;;;###autoload
 (defun all-the-icons-ivy-setup ()
   "Set ivy's display transformers to show relevant icons next to the candidates."
-  (dolist (cmd all-the-icons-ivy-buffer-cmds)
+  (dolist (cmd all-the-icons-ivy-buffer-commands)
     (ivy-set-display-transformer cmd 'all-the-icons-ivy-buffer-transformer))
-  (dolist (cmd all-the-icons-ivy-file-cmds)
+  (dolist (cmd all-the-icons-ivy-file-commands)
     (ivy-set-display-transformer cmd 'all-the-icons-ivy-file-transformer)))
 
 (provide 'all-the-icons-ivy)
