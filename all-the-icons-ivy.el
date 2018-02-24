@@ -36,6 +36,23 @@
 (require 'all-the-icons)
 (require 'ivy)
 
+(defgroup all-the-icons-ivy nil
+  "Shows icons while using ivy and counsel."
+  :group 'ivy)
+
+(defcustom all-the-icons-ivy-buffer-commands
+  '(ivy-switch-buffer ivy-switch-buffer-other-window counsel-projectile-switch-to-buffer)
+  "Commands to use with `all-the-icons-ivy-buffer-transformer'."
+  :type '(repeat function)
+  :group 'all-the-icons-ivy)
+
+
+(defcustom all-the-icons-ivy-file-commands
+  '(counsel-find-file counsel-projectile-find-file counsel-projectile-find-dir)
+  "Commands to use with `all-the-icons-ivy-file-transformer'."
+  :type '(repeat function)
+  :group 'all-the-icons-ivy)
+
 (defun all-the-icons-ivy--buffer-propertize (b s)
   "If buffer B is modified apply `ivy-modified-buffer' face on string S."
   (if (and (buffer-file-name b)
@@ -79,12 +96,10 @@ falls back to `ivy-recentf' and the same transformer is used."
 ;;;###autoload
 (defun all-the-icons-ivy-setup ()
   "Set ivy's display transformers to show relevant icons next to the candidates."
-  (ivy-set-display-transformer 'ivy-switch-buffer                   'all-the-icons-ivy-buffer-transformer)
-  (ivy-set-display-transformer 'ivy-switch-buffer-other-window      'all-the-icons-ivy-buffer-transformer)
-  (ivy-set-display-transformer 'counsel-find-file                   'all-the-icons-ivy-file-transformer)
-  (ivy-set-display-transformer 'counsel-projectile-find-file        'all-the-icons-ivy-file-transformer)
-  (ivy-set-display-transformer 'counsel-projectile-switch-to-buffer 'all-the-icons-ivy-file-transformer)
-  (ivy-set-display-transformer 'counsel-projectile-find-dir         'all-the-icons-ivy-file-transformer))
+  (dolist (cmd all-the-icons-ivy-buffer-commands)
+    (ivy-set-display-transformer cmd 'all-the-icons-ivy-buffer-transformer))
+  (dolist (cmd all-the-icons-ivy-file-commands)
+    (ivy-set-display-transformer cmd 'all-the-icons-ivy-file-transformer)))
 
 (provide 'all-the-icons-ivy)
 
