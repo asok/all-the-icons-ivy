@@ -3,7 +3,7 @@
 ;; Copyright (C) 2017 asok
 
 ;; Author: asok
-;; Version: 0.1.2
+;; Version: 0.2.0
 ;; Keywords: faces
 ;; Package-Requires: ((emacs "24.4") (all-the-icons "2.4.0") (ivy "0.8.0"))
 
