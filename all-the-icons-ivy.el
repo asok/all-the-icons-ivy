@@ -36,6 +36,12 @@
 (require 'all-the-icons)
 (require 'ivy)
 
+(defface all-the-icons-ivy-dir-face
+  '((((background dark)) :foreground "white")
+    (((background light)) :foreground "black"))
+  "Face for the dir icons used in ivy"
+  :group 'all-the-icons-faces)
+
 (defgroup all-the-icons-ivy nil
   "Shows icons while using ivy and counsel."
   :group 'ivy)
@@ -83,10 +89,19 @@ If that fails look for an icon for the mode that the `major-mode' is derived fro
                                        (all-the-icons-ivy--icon-for-mode (get mode 'derived-mode-parent))))
             (all-the-icons-ivy--buffer-propertize b s))))
 
+(defun all-the-icons-ivy-icon-for-file (s)
+  "Return icon for filename S.
+Return the octicon for directory if S is a directory.
+Otherwise fallback to calling `all-the-icons-icon-for-file'."
+  (cond
+   ((string-match-p "\\/$" s)
+    (all-the-icons-octicon "file-directory" :face 'all-the-icons-ivy-dir-face))
+   (t (all-the-icons-icon-for-file s))))
+
 (defun all-the-icons-ivy-file-transformer (s)
   "Return a candidate string for filename S preceded by an icon."
   (format "%s\t%s"
-          (propertize "\t" 'display (all-the-icons-icon-for-file s))
+          (propertize "\t" 'display (all-the-icons-ivy-icon-for-file s))
           s))
 
 (defun all-the-icons-ivy-buffer-transformer (s)
