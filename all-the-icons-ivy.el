@@ -52,6 +52,12 @@
   :type '(repeat function)
   :group 'all-the-icons-ivy)
 
+(defcustom all-the-icons-spacer
+  "\t"
+  "The string used as the space between the icon and the candidate."
+  :type 'string
+  :group 'all-the-icons-ivy)
+
 
 (defcustom all-the-icons-ivy-file-commands
   '(counsel-find-file
@@ -83,7 +89,7 @@
 Try to find the icon for the buffer's B `major-mode'.
 If that fails look for an icon for the mode that the `major-mode' is derived from."
   (let ((mode (buffer-local-value 'major-mode b)))
-    (format "%s\t%s"
+    (format (concat "%s" all-the-icons-spacer "%s")
             (propertize "\t" 'display (or
                                        (all-the-icons-ivy--icon-for-mode mode)
                                        (all-the-icons-ivy--icon-for-mode (get mode 'derived-mode-parent))))
@@ -100,7 +106,7 @@ Otherwise fallback to calling `all-the-icons-icon-for-file'."
 
 (defun all-the-icons-ivy-file-transformer (s)
   "Return a candidate string for filename S preceded by an icon."
-  (format "%s\t%s"
+  (format (concat "%s" all-the-icons-spacer "%s")
           (propertize "\t" 'display (all-the-icons-ivy-icon-for-file s))
           s))
 
