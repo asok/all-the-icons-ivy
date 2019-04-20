@@ -58,6 +58,19 @@
   :type 'string
   :group 'all-the-icons-ivy)
 
+(defcustom all-the-icons-ivy-family-fallback-for-buffer
+  'all-the-icons-faicon
+  "Icon font family used as a fallback when no icon for buffer transformer can be found."
+  :type 'function
+  :options all-the-icons-font-families
+  :group 'all-the-icons-ivy)
+
+(defcustom all-the-icons-ivy-name-fallback-for-buffer
+  "sticky-note-o"
+  "Icon font name used as a fallback when no icon for buffer transformer can be found."
+  :type 'string
+  :options all-the-icons-font-names
+  :group 'all-the-icons-ivy)
 
 (defcustom all-the-icons-ivy-file-commands
   '(counsel-find-file
@@ -92,7 +105,10 @@ If that fails look for an icon for the mode that the `major-mode' is derived fro
     (format (concat "%s" all-the-icons-spacer "%s")
             (propertize "\t" 'display (or
                                        (all-the-icons-ivy--icon-for-mode mode)
-                                       (all-the-icons-ivy--icon-for-mode (get mode 'derived-mode-parent))))
+                                       (all-the-icons-ivy--icon-for-mode (get mode 'derived-mode-parent))
+                                       (funcall
+                                        all-the-icons-ivy-family-fallback-for-buffer
+                                        all-the-icons-ivy-name-fallback-for-buffer)))
             (all-the-icons-ivy--buffer-propertize b s))))
 
 (defun all-the-icons-ivy-icon-for-file (s)
