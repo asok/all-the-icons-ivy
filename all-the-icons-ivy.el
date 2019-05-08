@@ -72,12 +72,6 @@
   :options all-the-icons-font-names
   :group 'all-the-icons-ivy)
 
-(defcustom all-the-icons-ivy-icon-args
-  (list :height 1.0)
-  "The arg overwrites plist passed to `all-the-icons' icon functions."
-  :type 'list
-  :group 'all-the-icons-ivy)
-
 (defcustom all-the-icons-ivy-file-commands
   '(counsel-find-file
     counsel-file-jump
@@ -99,7 +93,7 @@
 
 (defun all-the-icons-ivy--icon-for-mode (mode)
   "Apply `all-the-icons-for-mode' on MODE but either return an icon or nil."
-  (let ((icon (apply 'all-the-icons-icon-for-mode (append (list mode) all-the-icons-ivy-icon-args))))
+  (let ((icon (all-the-icons-icon-for-mode mode)))
     (unless (symbolp icon)
       icon)))
 
@@ -112,11 +106,9 @@ If that fails look for an icon for the mode that the `major-mode' is derived fro
             (propertize "\t" 'display (or
                                        (all-the-icons-ivy--icon-for-mode mode)
                                        (all-the-icons-ivy--icon-for-mode (get mode 'derived-mode-parent))
-                                       (apply
+                                       (funcall
                                         all-the-icons-ivy-family-fallback-for-buffer
-                                        (append
-                                         (list all-the-icons-ivy-name-fallback-for-buffer)
-                                         all-the-icons-ivy-icon-args))))
+                                        all-the-icons-ivy-name-fallback-for-buffer)))
             (all-the-icons-ivy--buffer-propertize b s))))
 
 (defun all-the-icons-ivy-icon-for-file (s)
@@ -125,13 +117,8 @@ Return the octicon for directory if S is a directory.
 Otherwise fallback to calling `all-the-icons-icon-for-file'."
   (cond
    ((string-match-p "\\/$" s)
-    (apply 'all-the-icons-octicon
-     (append
-      (list "file-directory")
-      all-the-icons-ivy-icon-args
-      (list :face 'all-the-icons-ivy-dir-face))))
-   (t
-    (apply 'all-the-icons-icon-for-file (append (list s) all-the-icons-ivy-icon-args)))))
+    (all-the-icons-octicon "file-directory" :face 'all-the-icons-ivy-dir-face))
+   (t (all-the-icons-icon-for-file s))))
 
 (defun all-the-icons-ivy-file-transformer (s)
   "Return a candidate string for filename S preceded by an icon."
