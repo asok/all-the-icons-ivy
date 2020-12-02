@@ -140,9 +140,9 @@ falls back to `ivy-recentf' and the same transformer is used."
 (defun all-the-icons-ivy-setup ()
   "Set ivy's display transformers to show relevant icons next to the candidates."
   (dolist (cmd all-the-icons-ivy-buffer-commands)
-    (ivy-set-display-transformer cmd 'all-the-icons-ivy-buffer-transformer))
+    (ivy-configure cmd :display-transformer-fn #'all-the-icons-ivy-buffer-transformer))
   (dolist (cmd all-the-icons-ivy-file-commands)
-    (ivy-set-display-transformer cmd 'all-the-icons-ivy-file-transformer)))
+    (ivy-configure cmd :display-transformer-fn #'all-the-icons-ivy-file-transformer)))
 
 (provide 'all-the-icons-ivy)
 
